@@ -1,0 +1,1019 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Futura University Style Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{
+  /* Layout: navy sticky nav over a white governance board. A color-block moodboard opens the Overview, then one tab per rule family (color, type, logo, blocks, QA). Mock documents are always white paper, in any viewer theme. */
+  --oxford:#002147;--chalk:#FFFFFF;--graphite:#2B3440;--oak:#C4A77D;--slate:#F4F6F9;--ice:#F8FAFC;--kicker:#5A6778;--paper-line:#D5DBE4;
+  --f-head:Georgia,"Times New Roman",serif;
+  --f-body:Arial,Helvetica,sans-serif;
+  --f-mono:ui-monospace,Menlo,Consolas,monospace;
+  --bg:#FFFFFF;--surface:#F4F6F9;--ink:#2B3440;--ink-soft:#5A6778;--line:#D5DBE4;--head:#002147;--btn-bg:#002147;--btn-fg:#FFFFFF;--focus:#002147;--ok:#1F6B45;--bad:#9B2C2C;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1624;--surface:#12253B;--ink:#E4E9F0;--ink-soft:#A9B5C5;--line:#2A4360;--head:#FFFFFF;--btn-bg:#C4A77D;--btn-fg:#002147;--focus:#C4A77D;--ok:#7FD1A2;--bad:#F2A0A0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1624;--surface:#12253B;--ink:#E4E9F0;--ink-soft:#A9B5C5;--line:#2A4360;--head:#FFFFFF;--btn-bg:#C4A77D;--btn-fg:#002147;--focus:#C4A77D;--ok:#7FD1A2;--bad:#F2A0A0;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body)}
+h1,h2,h3,h4{font-family:var(--f-head);color:var(--head);margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--oxford);z-index:20}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--oxford);border-bottom:3px solid var(--oak);color:#fff}
+.topin{display:flex;align-items:center;gap:8px 20px;flex-wrap:wrap;padding-block:8px 0}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:#fff;padding-bottom:8px}
+.brand .mk{width:34px;height:34px;border:1.5px solid var(--oak);display:grid;place-items:center;font:700 14px var(--f-head);color:var(--oak)}
+.brand b{display:block;font:700 15px/1.1 var(--f-head)}
+.brand small{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#C9D3E0}
+.tabs{display:flex;gap:2px;overflow-x:auto;margin-left:auto;max-width:100%;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;padding:12px 14px;color:#D7DFEA;text-decoration:none;font-size:14px;border-bottom:3px solid transparent;margin-bottom:-3px}
+.tabs a:hover{color:#fff}
+.tabs a[aria-current="page"]{color:#fff;border-bottom-color:var(--oak);font-weight:700}
+@media(max-width:760px){.tabs{margin-left:0;flex-basis:100%}.tabs a{padding-inline:11px}}
+
+/* shared */
+.view{padding-block:36px 72px}
+.eyebrow{font:700 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.h-sec{font-size:clamp(26px,4vw,34px);line-height:1.15;padding-bottom:10px;border-bottom:1.5px solid var(--oak);margin:6px 0 14px}
+.lede{max-width:65ch}
+.sub-h{font-size:19px;margin:36px 0 10px}
+.card{background:var(--surface);border:1px solid var(--line);padding:20px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:32px;align-items:start;margin-top:22px}
+.split.rev{grid-template-columns:minmax(0,360px) minmax(0,1fr)}
+@media(max-width:920px){.split,.split.rev{grid-template-columns:minmax(0,1fr)}}
+.stick{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}
+@media(max-width:920px){.stick{position:static}}
+.btn{font:700 13px var(--f-body);background:var(--btn-bg);color:var(--btn-fg);border:1px solid var(--btn-bg);padding:9px 14px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--head);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--head)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line)}
+.seg button{font:600 13px var(--f-body);padding:8px 14px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--btn-bg);color:var(--btn-fg)}
+.note{font-size:13px;color:var(--ink-soft);max-width:70ch}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:12px}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px}
+ol.steps>li::before{content:counter(s);width:28px;height:28px;display:grid;place-items:center;background:var(--btn-bg);color:var(--btn-fg);font:700 13px var(--f-body)}
+ol.steps b{color:var(--head)}
+details{border:1px solid var(--line);background:var(--surface)}
+details>summary{cursor:pointer;padding:11px 14px;font-weight:700;color:var(--head);font-size:14px}
+details>div{padding:2px 16px 16px}
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--btn-bg);color:var(--btn-fg);padding:10px 16px;font:700 13px var(--f-body);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:30;max-width:calc(100vw - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* overview */
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:36px;align-items:center}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+.h-hero{font-size:clamp(30px,5vw,46px);line-height:1.08;margin:10px 0 16px}
+.mosaic{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(4,minmax(86px,1fr));gap:8px;min-height:430px}
+.tile{appearance:none;border:1px solid var(--line);padding:14px;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font:inherit;transition:transform .15s}
+.tile:hover{transform:translateY(-2px)}
+.tile b{font:700 15px/1.2 var(--f-head)}
+.tile span{font:12px var(--f-body);letter-spacing:.03em}
+.tile .cv{margin-bottom:auto;padding-bottom:14px}
+.tile .cv strong{display:block;font:700 clamp(20px,3vw,30px)/1.1 var(--f-head);color:#fff}
+.tile .cv em{display:block;width:56px;height:3px;background:var(--oak);margin:12px 0 10px}
+.tile .cv small{font-size:12px;color:#C9D3E0;line-height:1.35;display:block;max-width:26ch}
+.t-primary{grid-area:1/1/4/4;justify-content:space-between}
+.t-canvas{grid-area:1/4/3/7}.t-accent{grid-area:3/4/4/5}.t-ink{grid-area:3/5/4/7}.t-fill{grid-area:4/1/5/4}.t-zebra{grid-area:4/4/5/7}
+.t-zebra{background:repeating-linear-gradient(0deg,#F8FAFC 0 20px,#FFFFFF 20px 40px)!important}
+@media(max-width:700px){
+  .mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:minmax(92px,auto);min-height:0}
+  .tile{grid-area:auto!important}
+  .t-primary{grid-column:1/-1!important;min-height:190px}
+}
+.principle h3{font-size:18px;margin-bottom:6px}
+.principle p{font-size:14px}
+.meta{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px 16px;margin:0;font-size:14px}
+.meta dt{font:700 11px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);padding-top:2px}
+.meta dd{margin:0}
+@media(max-width:520px){.meta{grid-template-columns:minmax(0,1fr)}.meta dt{padding-top:8px}}
+.moves li p{font-size:14px}
+.moves a{font-size:13px;font-weight:700;color:var(--head)}
+
+/* colors */
+.share{display:flex;height:54px;border:1px solid var(--line);margin:18px 0 6px;font:700 12px var(--f-body)}
+.share div{display:flex;align-items:center;padding-inline:10px;min-width:0;white-space:nowrap;overflow:hidden}
+.share .a{background:#fff;color:var(--oxford)}.share .b{background:var(--oxford);color:#fff}.share .c{background:var(--oak);color:var(--oxford)}
+.share .lg{display:inline}
+@media(max-width:700px){.share .lg{display:none}}
+.sws{display:grid;gap:12px}
+.sw{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:12px;border:1px solid var(--line);background:var(--surface)}
+.sw[data-on="true"]{border-color:var(--head);box-shadow:0 0 0 2px var(--oak)}
+.sw .chip{border:1px solid var(--line);min-height:112px;display:flex;align-items:flex-end;padding:8px;font:700 11px var(--f-body);letter-spacing:.1em;cursor:pointer;text-align:left}
+.sw h3{font-size:18px}
+.sw .sb{font-size:12px;color:var(--ink-soft);margin:1px 0 6px}
+.sw .use{font-size:13px}
+.codes{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.code{font:600 12px var(--f-mono);border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:6px 9px;cursor:pointer}
+.code:hover{border-color:var(--head)}
+.code i{font-style:normal;font-family:var(--f-body);color:var(--ink-soft);margin-right:6px;font-size:10px;letter-spacing:.08em}
+@media(max-width:520px){.sw{grid-template-columns:84px minmax(0,1fr)}}
+.page{width:100%;max-width:340px;aspect-ratio:210/297;background:#fff;border:1px solid var(--paper-line);padding:0 0 18px;position:relative;margin-inline:auto;overflow:hidden}
+.page.canvas-hit{outline:3px solid var(--oxford);box-shadow:0 0 0 6px var(--oak)}
+.page[data-active] [data-c]:not(.hit){opacity:.2}
+.page .hit{outline:2px solid var(--oxford);outline-offset:2px;box-shadow:0 0 0 4px var(--oak)}
+.page [data-c]{transition:opacity .15s}
+.pg-banner{background:var(--oxford);color:#fff;padding:16px 16px 18px;margin-bottom:0}
+.pg-banner b{display:block;font:700 19px/1.1 var(--f-head)}
+.pg-banner small{display:block;margin-top:6px;font:11px var(--f-body);color:#C9D3E0}
+.pg-rule{height:3px;background:var(--oak);margin:0 16px 14px;margin-top:10px}
+.pg-in{padding-inline:16px}
+.pg-h1{font:700 14px var(--f-head);color:var(--oxford);display:inline-block;margin-top:6px}
+.pg-h1r{height:1.5px;background:var(--oak);margin:3px 0 8px}
+.ln{display:grid;gap:5px;margin-bottom:12px}
+.ln i{display:block;height:4px;background:var(--graphite);opacity:.85}
+.pg-callout{display:flex;margin-bottom:12px}
+.pg-callout .bar{width:4px;background:var(--oxford);flex:none}
+.pg-callout .fb{flex:1;background:var(--slate);padding:9px 10px;display:grid;gap:5px}
+.pg-callout .fb i{display:block;height:4px;background:var(--graphite);opacity:.7}
+.pg-t{display:grid;border:1px solid var(--paper-line)}
+.pg-t div{height:18px}
+.pg-t .w{background:#fff}.pg-t .z{background:var(--ice)}.pg-t .h{background:var(--oxford)}
+.pgcap{margin-top:12px;font-size:13px;min-height:4.4em;max-width:340px;margin-inline:auto}
+.ban{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.ban span{display:flex;gap:8px;align-items:center;font-size:13px}
+.ban i{width:34px;height:34px;display:block;position:relative;border:1px solid var(--line)}
+.ban i::after{content:"";position:absolute;inset:-1px;background:linear-gradient(to top right,transparent calc(50% - 1.5px),#9B2C2C calc(50% - 1.5px) calc(50% + 1.5px),transparent calc(50% + 1.5px))}
+
+/* type */
+.roles{display:grid;gap:6px;margin-bottom:14px}
+.roles button{text-align:left;padding:9px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:14px;display:flex;justify-content:space-between;gap:10px}
+.roles button small{color:var(--ink-soft);font-size:12px}
+.roles button[aria-pressed="true"]{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.roles button[aria-pressed="true"] small{color:inherit;opacity:.85}
+.specs{display:grid;gap:0;border:1px solid var(--line);background:var(--surface)}
+.specs .r{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);font-size:14px}
+.specs .r:last-child{border-bottom:0}
+.specs dt{font:700 11px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.specs .v{font-weight:700;color:var(--head)}
+.mini{font:700 11px var(--f-body);border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:4px 8px;cursor:pointer}
+.mini:hover{border-color:var(--head)}
+.tp{--z:1;background:#fff;color:var(--graphite);border:1px solid var(--paper-line);overflow:hidden}
+.tp [data-role]{cursor:pointer}
+.tp [data-role].on{outline:2px solid var(--oxford);outline-offset:3px;box-shadow:0 0 0 6px var(--oak)}
+.tp .ban2{background:var(--oxford);padding:calc(14pt*var(--z)) 18px calc(16pt*var(--z))}
+.tp .ban2 [data-role].on{outline-color:var(--oak);box-shadow:none}
+.tp .t-title{font:700 calc(22pt*var(--z))/1.08 var(--f-head);color:#fff;margin:0 0 calc(8pt*var(--z))}
+.tp .bn-sub{font:calc(9pt*var(--z))/1.2 var(--f-body);color:#C9D3E0;margin:0}
+.tp .tb{padding:6px 22px 24px}
+.tp .t-h1{font:700 calc(15.5pt*var(--z))/1.2 var(--f-head);color:var(--oxford);margin:calc(12pt*var(--z)) 0 calc(6pt*var(--z));padding-bottom:calc(2pt*var(--z));border-bottom:calc(1.5pt*var(--z)) solid var(--oak);display:block}
+.tp .t-h2{font:700 calc(12pt*var(--z))/1.25 var(--f-head);color:var(--oxford);margin:calc(10pt*var(--z)) 0 calc(4pt*var(--z));display:block}
+.tp .t-h3{font:700 calc(9.5pt*var(--z))/1.2 var(--f-body);color:var(--kicker);text-transform:uppercase;letter-spacing:.06em;margin:calc(7pt*var(--z)) 0 calc(2pt*var(--z));display:block}
+.tp .t-body{font:calc(10pt*var(--z))/1.18 var(--f-body);color:var(--graphite);margin:0 0 calc(5pt*var(--z));text-align:left}
+.tp table{border-collapse:collapse;width:100%;font:calc(8.5pt*var(--z))/1.12 var(--f-body);color:var(--graphite);margin-top:4px}
+.tp th{background:var(--oxford);color:#fff;text-align:left;padding:5px 7px}
+.tp td{padding:5px 7px;border-bottom:1px solid var(--paper-line)}
+.tp tbody tr:nth-child(even) td{background:var(--ice)}
+.tp .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tp tr[data-role].on{outline-offset:-2px;box-shadow:none}
+
+/* logo */
+.a4wrap{max-width:440px;margin-inline:auto}
+.a4{position:relative;width:100%;aspect-ratio:210/297;background:#fff;border:1px solid var(--paper-line);overflow:hidden}
+.ab{position:absolute}
+.ab.banner{background:var(--oxford)}
+.sk{position:absolute;background:var(--graphite);opacity:.16}
+.sk.h{background:var(--oxford);opacity:.9}
+.cs{position:absolute;border:1.5px dashed var(--oak);pointer-events:none}
+.dimlab{position:absolute;font:700 10px var(--f-body);letter-spacing:.04em;white-space:nowrap}
+.lockup{display:flex;align-items:center;gap:calc(var(--u)*.22);position:absolute}
+.lockup .kb{height:var(--u);aspect-ratio:1;border:calc(var(--u)*.06) solid currentColor;display:grid;place-items:center;font:700 calc(var(--u)*.42) var(--f-head);flex:none}
+.lockup .wm{font:700 calc(var(--u)*.3)/1.1 var(--f-head);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.lockup .wm small{display:block;font-size:.62em;letter-spacing:.2em;font-weight:400;margin-top:.2em}
+.crestm{position:absolute;border-radius:50%;border:calc(var(--u)*.05) solid var(--oxford);display:grid;place-items:center;color:var(--oxford)}
+.crestm::before{content:"";position:absolute;inset:14%;border:calc(var(--u)*.03) solid var(--oxford);border-radius:50%}
+.crestm::after{content:"";position:absolute;inset:28%;border:calc(var(--u)*.03) solid var(--oxford);border-radius:50%}
+.crestm b{position:relative;z-index:1;font:700 calc(var(--u)*.26) var(--f-head);background:#fff;padding:0 2px}
+.chk{display:grid;gap:12px;margin-top:14px}
+.chk label{font:700 11px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px}
+.chk input[type=range]{width:100%;accent-color:var(--btn-bg)}
+.chk input[type=number]{font:600 14px var(--f-body);padding:8px 10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:130px}
+.verdict{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);background:var(--surface);font-size:14px;min-height:48px}
+.verdict .ic{width:24px;height:24px;display:grid;place-items:center;font-weight:700;color:#fff;flex:none}
+.verdict[data-ok="true"] .ic{background:var(--ok);color:var(--bg)}
+.verdict[data-ok="false"] .ic{background:var(--bad);color:var(--bg)}
+.facts{display:grid;gap:8px;margin:0;font-size:14px}
+.facts div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px}
+.facts dt{font:700 11px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);padding-top:2px}
+.facts dd{margin:0}
+.dont{background:#fff;border:1px solid var(--paper-line);display:grid;place-items:center;min-height:150px;padding:20px;overflow:hidden}
+.dont .lockup{position:static;color:var(--oxford);transition:filter .2s,transform .2s}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.chips button{font:600 13px var(--f-body);padding:7px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+
+/* blocks */
+.block{margin-top:30px}
+.block header{display:flex;gap:12px;align-items:baseline;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
+.block h3{font-size:19px}
+.pvw{overflow-x:auto}
+.paper{background:#fff;color:var(--graphite);border:1px solid var(--paper-line);padding:18px;min-width:0}
+.pt{border-collapse:collapse;width:100%;min-width:620px;font:11.3px/1.12 var(--f-body);color:var(--graphite)}
+.pt.nm{min-width:0}
+.pt th{background:var(--oxford);color:#fff;text-align:left;padding:7px 8px;font-weight:700}
+.pt td{padding:7px 8px;border-bottom:1px solid var(--paper-line);vertical-align:top}
+.pt tbody tr:nth-child(even) td{background:var(--ice)}
+.pt .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pt tr.tot td{font-weight:700;border-top:2px solid var(--oxford)}
+.pt .sig{color:#8995A6;letter-spacing:.04em;white-space:nowrap}
+.pill{display:inline-block;font:700 9.5px/1 var(--f-body);letter-spacing:.06em;padding:3px 6px;border:1px solid var(--oxford);white-space:nowrap}
+.pill.locked{background:#fff;color:var(--oxford)}
+.pill.crit{background:var(--oxford);color:#fff}
+.pill.prog{background:var(--oak);color:var(--oxford)}
+.pill.plan{background:var(--slate);color:var(--graphite);border-color:var(--paper-line)}
+.pill.ctrl{background:#fff;color:var(--graphite);border:1px dashed var(--graphite)}
+.pill.cap{background:var(--graphite);color:#fff;border-color:var(--graphite)}
+.callout{display:flex;font:10pt/1.18 var(--f-body)}
+.callout .bar{width:4pt;background:var(--oxford);flex:none}
+.callout .fb{flex:1;background:var(--slate);padding:12px 16px}
+.callout .ct{font:700 9.5pt/1.2 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--oxford);margin-bottom:6px}
+.pv[data-active] td,.pv[data-active] th,.pv[data-active] .callout>*,.pv[data-active] .signrow>*{opacity:.35}
+.pv .hit{opacity:1!important;outline:3px solid var(--oak);outline-offset:-3px;position:relative}
+.pv .callout .hit{outline-offset:-3px}
+.parts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.parts button{font:600 12px var(--f-body);display:flex;gap:7px;align-items:center;padding:6px 10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-align:left}
+.parts button:hover,.parts button:focus-visible{border-color:var(--head)}
+.parts i{width:12px;height:12px;border:1px solid var(--line);flex:none;display:block}
+.signrow{display:flex;gap:18px;align-items:center}
+.signrow .pvw{flex:1;min-width:0}
+.crest-s{width:72px;height:72px;flex:none;position:relative;display:grid;place-items:center}
+.crest-s .crestm{position:relative;inset:auto;width:72px;height:72px;--u:72px}
+@media(max-width:620px){.signrow{flex-direction:column;align-items:stretch}.crest-s{align-self:flex-start}}
+.recipe ol{margin:8px 0 0;padding-left:20px;display:grid;gap:6px;font-size:14px}
+.sc{display:grid;gap:6px}
+.sc ul{margin:0;padding-left:16px}
+
+/* qa */
+.qa{display:grid;gap:10px;margin-top:16px}
+.qa label{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;padding:14px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.qa input{width:20px;height:20px;accent-color:var(--btn-bg);margin-top:2px}
+.qa b{color:var(--head)}
+.qa p{font-size:14px;margin-top:2px}
+.qa label:has(input:checked){border-color:var(--head)}
+.qa label:has(input:checked) b{text-decoration:line-through;text-decoration-thickness:1px}
+.qabar{height:10px;background:var(--line);margin:8px 0 4px}
+.qabar div{height:100%;background:var(--btn-bg);width:0;transition:width .2s}
+.gs{background:#fff;border:1px solid var(--paper-line);padding:16px;transition:filter .2s}
+.gs[data-gray="true"]{filter:grayscale(1)}
+.gs .hd{background:var(--oxford);color:#fff;font:700 11.3px var(--f-body);padding:7px 10px}
+.gs h4{font:700 15.5pt var(--f-head);color:var(--oxford);border-bottom:1.5pt solid var(--oak);padding-bottom:2pt;margin:14px 0 10px}
+.gs .pills{display:flex;gap:8px;flex-wrap:wrap}
+.ctt{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+.ctt th{text-align:left;font:700 11px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);padding:6px 8px;border-bottom:1px solid var(--line)}
+.ctt td{padding:8px;border-bottom:1px solid var(--line)}
+.ctt .pair{display:inline-flex;align-items:center;justify-content:center;width:56px;height:26px;font:700 13px var(--f-head);border:1px solid var(--line)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
+.two ul{margin:10px 0 0;padding-left:18px;display:grid;gap:7px;font-size:14px}
+.two h3{font-size:17px}
+.foot{margin-top:56px;padding-top:16px;border-top:1.5px solid var(--oak);font-size:12px;color:var(--ink-soft)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* drawing language: one quiet monochrome system for diagrams */
+.dwg{color:var(--ink);display:block;max-width:100%}
+.dwg .dl{stroke:currentColor;stroke-width:1;fill:none;vector-effect:non-scaling-stroke}
+.dwg .dx{stroke:currentColor;stroke-width:1;opacity:.55;stroke-dasharray:3 2;vector-effect:non-scaling-stroke}
+.dwg .gd2{stroke:currentColor;stroke-width:1;opacity:.5;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.dwg .dt{font-family:var(--f-mono);font-weight:500;font-size:var(--fs,5px);fill:currentColor}
+.anat>div{padding:12px 16px 16px}
+.anat svg{width:100%;max-width:720px;min-width:560px}
+.vars{width:100%;max-width:520px;border-collapse:collapse;font:12px/1.4 var(--f-mono);margin-top:10px}
+.vars th{text-align:left;font-weight:600;color:var(--ink-soft);padding:5px 8px 5px 0;border-bottom:1px solid var(--ink)}
+.vars td{padding:5px 8px 5px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+.vars td:first-child{font-weight:600}
+.vars td:last-child{text-align:right;white-space:nowrap}
+.expl{margin:0}
+.expl svg{width:100%;max-width:440px;height:auto;margin-inline:auto;overflow:visible;color:var(--ink);display:block}
+.expl .bg{fill:var(--bg);stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+.expl .hatch{fill:url(#pDiag);stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+.expl .hline{fill:url(#pLine);stroke:none}
+.expl .solid{fill:currentColor;stroke:none}
+.expl .soft{fill:currentColor;opacity:.3;stroke:none}
+.expl .oakfill{fill:var(--oak);stroke:none}
+.expl .dash{fill:none;stroke:var(--oak);stroke-width:1.4;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
+.expl .th{fill:var(--bg);stroke:currentColor;stroke-width:1.6;vector-effect:non-scaling-stroke}
+.expl .dm{stroke:currentColor;stroke-width:1;opacity:.75;vector-effect:non-scaling-stroke}
+.expl .gd{stroke:currentColor;stroke-width:1;opacity:.45;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.expl text{font:500 10px var(--f-mono);fill:currentColor}
+.expl .tag circle{fill:var(--bg);stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+.expl .tag text{font:600 10px var(--f-mono);text-anchor:middle}
+.expl svg[data-hi="1"] .ly:not(.on),.expl svg[data-hi="1"] .tag:not(.on){opacity:.14}
+.expl .ly,.expl .tag{transition:opacity .15s}
+.layers{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--ink)}
+.layers li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;padding:10px 6px;border-bottom:1px solid var(--line)}
+.layers li.on{background:var(--surface)}
+.layers .ln-n{font:600 12px var(--f-mono);color:var(--ink);padding-top:1px}
+.layers b{color:var(--head)}
+.layers p{font-size:13px;color:var(--ink-soft)}
+.layers .chp{display:inline-flex;gap:3px;margin-left:10px;vertical-align:middle}
+.layers .chp i{width:12px;height:12px;border:1px solid var(--ink-soft);display:block}
+.expl-ctl{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.expl-ctl input{flex:1;min-width:140px;accent-color:var(--btn-bg)}
+#spLayer{position:absolute;inset:0;pointer-events:none}
+.tp{position:relative}
+.sp{position:absolute;background:repeating-linear-gradient(135deg,var(--oak) 0 1px,transparent 1px 6px);outline:1px dashed var(--oak);outline-offset:-1px}
+.sp span{position:absolute;right:0;top:50%;transform:translateY(-50%);background:var(--oak);color:#002147;font:500 10px/1.3 var(--f-mono);padding:0 5px;white-space:nowrap}
+.tblk{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--ink);margin-top:64px;font-family:var(--f-mono)}
+.tblk div{padding:8px 10px;border-left:1px solid var(--ink);min-width:0}
+.tblk div:first-child{border-left:0}
+.tblk span{display:block;font-size:10px;color:var(--ink-soft)}
+.tblk b{display:block;font-size:12px;font-weight:600;color:var(--ink)}
+@media(max-width:760px){.tblk{grid-template-columns:repeat(2,minmax(0,1fr))}.tblk div:nth-child(odd){border-left:0}.tblk div:nth-child(n+3){border-top:1px solid var(--ink)}}
+@media(min-width:921px){.split.wide{grid-template-columns:minmax(0,480px) minmax(0,1fr)}}
+</style>
+
+<header class="top">
+  <div class="wrap topin">
+    <a class="brand" href="#overview"><span class="mk">FU</span><span><b>Futura University</b><small>Project 2 Visual Style Guide</small></span></a>
+    <nav class="tabs" id="tabs" aria-label="Guide sections">
+      <a href="#overview">Overview</a><a href="#colors">Color</a><a href="#type">Type</a><a href="#logo">Logo</a><a href="#blocks">Blocks</a><a href="#qa">QA check</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- OVERVIEW -->
+<section class="view" data-view="overview">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1 class="h-hero">Build every Project 2 page in Canva, on brand.</h1>
+        <p class="lede">Six colors, two fonts, three logo placements and five ready-made blocks. Tap any block of color to copy its hex code, then work through the tabs in order.</p>
+        <p class="note" style="margin-top:12px">Exact RGB values and usage rules are in <a href="#colors"><b>Color</b></a>.</p>
+      </div>
+      <div class="mosaic" id="mosaic" aria-label="Color-block moodboard"></div>
+    </div>
+
+    <div class="split wide" style="margin-top:44px;align-items:center">
+      <div class="expl"><svg id="explSvg" viewBox="0 0 430 420" role="img" aria-label="Exploded isometric drawing of one A4 page with six layers: canvas, cover banner, type, callout, table and logo"></svg></div>
+      <div>
+        <h2 class="sub-h" style="margin-top:0">One page, six layers</h2>
+        <p class="note" style="margin-bottom:12px">Pull the layers apart, then hover or tap a layer to isolate it. Dimensions are in mm.</p>
+        <div class="expl-ctl"><label for="explode" class="eyebrow">Explode</label><input id="explode" type="range" min="0" max="100" value="85"></div>
+        <ol class="layers" id="layerList"></ol>
+      </div>
+    </div>
+
+    <h2 class="sub-h">Three ideas behind the look</h2>
+    <div class="grid3">
+      <div class="card principle"><h3>Institutional gravitas</h3><p>Oxford Blue anchors cover banners, section headings and table headers, so every page reads as enduring and academic.</p></div>
+      <div class="card principle"><h3>High-contrast scannability</h3><p>Keep 65% of every page white, set body at 1.18 line spacing and right-align currency, so executives can scan budgets and gates in seconds.</p></div>
+      <div class="card principle"><h3>Cross-platform survival</h3><p>Georgia and Arial with plain inline tables avoid broken text boxes and font swaps when drafts move between Canva, Google Docs, Word and PDF.</p></div>
+    </div>
+
+    <div class="split" style="margin-top:36px">
+      <div>
+        <h2 class="sub-h" style="margin-top:0">Set up Canva in six moves</h2>
+        <ol class="steps moves">
+          <li><div><b>Create an A4 page.</b><p>Create a design, choose Custom size, switch the unit to mm and enter 210 x 297 (portrait).</p></div></li>
+          <li><div><b>Add the six colors.</b><p>Click any color square, press + and paste the hex code.</p><a href="#colors">Open Color</a></div></li>
+          <li><div><b>Set the two fonts.</b><p>Georgia for headings, Arial for everything else. Style one text box per role, then copy its style onto the rest.</p><a href="#type">Open Type</a></div></li>
+          <li><div><b>Place the logos.</b><p>Lockup on the cover, smaller lockup in running headers, crest at sign-off.</p><a href="#logo">Open Logo</a></div></li>
+          <li><div><b>Rebuild the blocks.</b><p>Callout, gate table, escalation matrix, scope table and sign-off block.</p><a href="#blocks">Open Building blocks</a></div></li>
+          <li><div><b>Run the QA check.</b><p>Four checks before you export to PDF.</p><a href="#qa">Open QA check</a></div></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h2 class="sub-h" style="margin-top:0">Governing specification</h2>
+        <dl class="meta">
+          <dt>Purpose</dt><dd>Visual design and formatting standard for all Futura University Project 2 deliverables</dd>
+          <dt>Executive owners</dt><dd>Markus Reiter (CFO) and Prof. Dr. Elena Vogt (Rector / CEO)</dd>
+          <dt>Prepared by</dt><dd>Group 11 PMO: Ikram Ladidi, Nguyen Khoi Hoang, Zara Nakipova, Rayan Chraibi, Yusif Khanmammadli, Madeline Kerris</dd>
+          <dt>Page and fonts</dt><dd>A4 Portrait (210 x 297 mm). Georgia headings, Arial body.</dd>
+          <dt>Status</dt><dd>Version 1.0, active master template</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR -->
+<section class="view" data-view="colors">
+  <div class="wrap">
+    <h2 class="h-sec">Six colors. No defaults.</h2>
+    <p class="lede">Never use the default bright blues from Canva, Google Docs or Word. Paste the exact hex codes so every table header, callout border and heading matches Oxford Blue.</p>
+    <div class="share" role="img" aria-label="Page share: 65 percent white, 25 percent Oxford Blue, up to 10 percent oak">
+      <div class="a" style="flex:65">65%<span class="lg">&nbsp;Pure Chalk White</span></div><div class="b" style="flex:25">25%<span class="lg">&nbsp;Oxford Blue</span></div><div class="c" style="flex:10">10%</div>
+    </div>
+    <p class="note">White 65%, Oxford Blue 25%, and European Oak up to 10% as a thin accent. The two tints are containers and table striping, not extra brand colors.</p>
+
+    <div class="split">
+      <div>
+        <div class="sws" id="swatches"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <button class="btn" type="button" id="copyAll">Copy all six hex codes</button>
+        </div>
+        <h3 class="sub-h">Banned defaults</h3>
+        <div class="ban">
+          <span><i style="background:#4472C4"></i>#4472C4 default theme blue</span>
+          <span><i style="background:#1155CC"></i>#1155CC default theme blue</span>
+        </div>
+        <details style="margin-top:18px" open>
+          <summary>Add a custom color in Canva</summary>
+          <div><ol class="steps" style="margin-top:6px">
+            <li><div>Select any element, then click the color square in the top toolbar.</div></li>
+            <li><div>Press <b>+</b> (new color) and paste the hex code from a swatch above.</div></li>
+            <li><div>If your plan has a Brand Kit, save all six there so the team picks them from one list.</div></li>
+          </ol></div>
+        </details>
+      </div>
+      <aside class="stick">
+        <div class="page" id="colorPage" aria-label="Sample A4 page showing where each color is used">
+          <div class="pg-banner" data-c="primary"><b>Project Mandate</b><small>Frankfurt Founding Campus</small></div>
+          <div class="pg-rule" data-c="accent"></div>
+          <div class="pg-in">
+            <span class="pg-h1" data-c="primary">1. Gate Overview</span>
+            <div class="pg-h1r" data-c="accent"></div>
+            <div class="ln" data-c="ink"><i></i><i></i><i style="width:72%"></i></div>
+            <div class="pg-callout"><span class="bar" data-c="primary"></span><div class="fb" data-c="fill"><i></i><i style="width:80%"></i></div></div>
+            <div class="pg-t">
+              <div class="h" data-c="primary"></div><div class="w" data-c="canvas"></div><div class="z" data-c="zebra"></div><div class="w" data-c="canvas"></div><div class="z" data-c="zebra"></div>
+            </div>
+            <span class="pg-h1" data-c="primary" style="margin-top:14px;font-size:12px">1.1 Critical path</span>
+            <div class="ln" data-c="ink" style="margin-top:6px"><i></i><i></i><i style="width:60%"></i></div>
+          </div>
+        </div>
+        <p class="pgcap" id="pageCap" aria-live="polite">Hover or tap a swatch to see where it goes on the page.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- TYPE -->
+<section class="view" data-view="type">
+  <div class="wrap">
+    <h2 class="h-sec">Georgia for headings, Arial for the rest.</h2>
+    <p class="lede">Both fonts ship with Windows, macOS and Google Docs, so line wraps stay put when a draft changes hands. Pick a role to see its exact settings on a live page.</p>
+    <div class="split">
+      <div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
+          <span class="eyebrow">Zoom</span>
+          <div class="seg" id="zoomSeg"><button type="button" data-z="1" aria-pressed="true">100%</button><button type="button" data-z="1.5" aria-pressed="false">150%</button><button type="button" data-z="2" aria-pressed="false">200%</button></div>
+          <span class="note">True point sizes. Click any text on the page.</span>
+        </div>
+        <div class="tp" id="tp">
+          <div class="ban2"><div class="t-title" data-role="title">Site Selection and Campus Build-Out</div><p class="bn-sub">Frankfurt Founding Campus</p></div>
+          <div class="tb">
+            <span class="t-h1" data-role="h1">2. Stage Gates and Budget</span>
+            <p class="t-body" data-role="body">Core campus renovation must reach Gate G4 completion by M8, at least 6 months before the first 300-student intake.</p>
+            <span class="t-h2" data-role="h2">2.1 Critical path</span>
+            <p class="t-body" data-role="body">The change-of-use permit at G3 unlocks the renovation and protects the spatial accreditation.</p>
+            <span class="t-h3" data-role="h3">CapEx baseline</span>
+            <table data-role="table">
+              <thead><tr><th>Gate</th><th>Deliverable</th><th class="n">CapEx</th></tr></thead>
+              <tbody>
+                <tr><td>G1 (M2)</td><td>Site Selection and Weighted Criteria Matrix</td><td class="n">EUR 0.30M</td></tr>
+                <tr><td>G2 (M3)</td><td>Binding Lease and Expansion Option</td><td class="n">EUR 0.60M</td></tr>
+                <tr><td>G3 (M5)</td><td>Change-of-Use Building Permit</td><td class="n">EUR 1.00M</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <aside class="stick">
+        <div class="roles" id="roles"></div>
+        <dl class="specs" id="specs"></dl>
+        <ul id="ruleList" class="note" style="margin:12px 0 0;padding-left:18px"></ul>
+      </aside>
+    </div>
+    <h3 class="sub-h">Apply it in Canva</h3>
+    <div class="grid3">
+      <div class="card"><h4 style="font-size:16px;margin-bottom:6px">Style once, copy everywhere</h4><p class="note">Format one text box per role. Then use Copy style (Ctrl or Cmd + Alt + C) and Paste style (Ctrl or Cmd + Alt + V) on every other heading or paragraph.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:6px">Line spacing</h4><p class="note">Open Spacing in the top toolbar and type the line spacing from the specs. Body is 1.18, table text 1.12, title 1.08.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:6px">If a number looks off</h4><p class="note">Canva's size units can differ from points. Check one heading against the page above at 100% zoom and keep the ratios: 22 : 15.5 : 12 : 10 : 8.5.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section class="view" data-view="logo">
+  <div class="wrap">
+    <h2 class="h-sec">Three marks, three places.</h2>
+    <p class="lede">The horizontal FU Keystone and wordmark lockup goes on covers and running headers. The circular Concentric Crest Seal goes beside formal sign-offs. Pick a mark, then test your size.</p>
+    <div class="split rev">
+      <div class="a4wrap">
+        <div class="a4" id="a4" role="img" aria-label="A4 page diagram showing the selected logo placement"></div>
+        <p class="note" style="margin-top:8px">Drawn to A4 scale. The marks are placeholders: insert your approved files at the same size. The dashed line is the clear space. [TBD] means the guide does not specify it.</p>
+      </div>
+      <div>
+        <div class="seg" id="lvSeg"><button type="button" data-v="cover" aria-pressed="true">Cover lockup</button><button type="button" data-v="header" aria-pressed="false">Running header</button><button type="button" data-v="crest" aria-pressed="false">Crest seal</button></div>
+        <dl class="facts" style="margin-top:16px" id="lvFacts"></dl>
+        <table class="vars" id="vars" style="margin-bottom:6px"></table>
+        <div class="chk">
+          <div><label for="wmm">Width in millimetres</label><input id="wmm" type="range" min="40" max="80" step="0.5" value="65"></div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:end">
+            <div><label for="wpx">Or type the width Canva shows (px)</label><input id="wpx" type="number" min="1" step="1" value="246"></div>
+            <p class="note" id="wRead" style="padding-bottom:8px"></p>
+          </div>
+          <div class="verdict" id="verdict" role="status" data-ok="true"><span class="ic" aria-hidden="true">✓</span><span id="verdictT"></span></div>
+          <p class="note">px assumes an A4 page 794 px wide (96 dpi). If Canva shows millimetres, use the slider.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Three rules for every placement</h3>
+    <div class="grid3">
+      <div class="card"><h4 style="font-size:16px;margin-bottom:6px">Keep the clear space</h4><p class="note">Leave empty room equal to 0.5x the emblem height on every side. Measure the emblem on your own file.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:6px">Lock the aspect ratio</h4><p class="note">Resize from a corner handle only. In Canva, never drag a side handle: it stretches or crops the mark.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:6px">No effects, ever</h4><p class="note">No drop shadows, outer glows, borders or unapproved bright blue fills. Try each mistake below.</p></div>
+    </div>
+    <div class="split" style="margin-top:20px">
+      <div class="dont" id="dont"><div class="lockup" id="dontLogo" style="--u:56px"><span class="kb">FU</span><span class="wm">Futura<small>University</small></span></div></div>
+      <div>
+        <p class="eyebrow">Try a mistake</p>
+        <div class="chips" id="mistakes">
+          <button type="button" data-m="stretch" aria-pressed="false">Stretch</button>
+          <button type="button" data-m="shadow" aria-pressed="false">Drop shadow</button>
+          <button type="button" data-m="glow" aria-pressed="false">Outer glow</button>
+          <button type="button" data-m="border" aria-pressed="false">Border</button>
+          <button type="button" data-m="blue" aria-pressed="false">Bright blue fill</button>
+        </div>
+        <div class="verdict" id="mVerdict" role="status" data-ok="true"><span class="ic" aria-hidden="true">✓</span><span id="mText">Correct: the mark is used as supplied.</span></div>
+        <button class="btn ghost" type="button" id="mReset" style="margin-top:12px">Reset the mark</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCKS -->
+<section class="view" data-view="blocks">
+  <div class="wrap">
+    <h2 class="h-sec">Five blocks to rebuild and reuse.</h2>
+    <p class="lede">Use these in the Project Brief, Mandate, Plan, Business Case or Communication Plan. Hover a part to see what makes it on brand. Copy rows to paste straight into a Canva table.</p>
+    <div id="blockList"></div>
+  </div>
+</section>
+
+<!-- QA -->
+<section class="view" data-view="qa">
+  <div class="wrap">
+    <h2 class="h-sec">Four checks when six people merge drafts.</h2>
+    <p class="lede">Stray fonts and colors creep in when notes, spreadsheets and chat text get pasted together. Tick each check, then export to PDF.</p>
+    <div class="split">
+      <div>
+        <div class="qa" id="qaList"></div>
+        <div class="qabar" aria-hidden="true"><div id="qaBar"></div></div>
+        <p id="qaTxt" role="status" style="font-weight:700;color:var(--head)">0 of 4 checks done</p>
+        <button class="btn ghost" type="button" id="qaReset" style="margin-top:10px">Clear checks</button>
+      </div>
+      <aside>
+        <p class="eyebrow">Check 3 preview</p>
+        <div class="gs" id="gs" data-gray="false" style="margin-top:8px">
+          <div class="hd">Gate | Deliverable | Status</div>
+          <h4>3. Grayscale test</h4>
+          <div class="pills"><span class="pill locked">LOCKED</span><span class="pill crit">CRITICAL GATE</span><span class="pill prog">IN PROGRESS</span><span class="pill plan">PLANNED</span><span class="pill ctrl">CONTROLLED</span><span class="pill cap">ENVELOPE CAP</span></div>
+        </div>
+        <div style="margin-top:10px"><button class="btn" type="button" id="gsBtn" aria-pressed="false">Show in grayscale</button></div>
+        <p class="note" style="margin-top:8px">Every status keeps a different lightness and a written label, so nothing depends on hue. The status styles shown are a suggestion; the guide only requires bold labels that stay legible without color.</p>
+      </aside>
+    </div>
+
+    <h3 class="sub-h">Contrast of the brand pairs</h3>
+    <div style="overflow-x:auto"><table class="ctt" id="ctTable"></table></div>
+    <p class="note" style="margin-top:8px">Calculated with the WCAG contrast formula. Oak on white is too faint for text, so keep it to rules and borders.</p>
+
+    <div class="two">
+      <div class="card"><h3>Approved standards</h3><ul>
+        <li>Oxford Blue, Pure White and European Oak as the brand focus</li>
+        <li>Georgia headings and Arial 10 pt body at 1.18 line spacing</li>
+        <li>Left-aligned prose with #F4F6F9 callout boxes</li>
+        <li>Right-aligned Euro currency figures in tables</li></ul></div>
+      <div class="card"><h3>Banned formatting habits</h3><ul>
+        <li>Default bright blue (#4472C4 or #1155CC) or orange table themes</li>
+        <li>Unformatted walls of 11 pt Calibri, or justified text with wide gaps</li>
+        <li>Stretched logos, 3D shadows or neon text highlights</li>
+        <li>Em dashes. Use periods, commas, colons or standard hyphens.</li></ul></div>
+    </div>
+    <p class="foot">Futura University Project 2 Visual Style Guide and Document Template. Version 1.0, active master template. Prepared by Group 11 PMO for Markus Reiter (CFO) and Prof. Dr. Elena Vogt (Rector / CEO).</p>
+  </div>
+</section>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const toastEl=$('#toast');let tt;
+function say(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove('show'),2000)}
+function copy(text,label){
+  const done=()=>say('Copied '+(label||text));
+  const fb=()=>{const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;left:0;top:0;opacity:0';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}ta.remove();ok?done():say('Select and copy: '+text)};
+  try{navigator.clipboard.writeText(text).then(done,fb)}catch(e){fb()}
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(b)copy(b.dataset.copy,b.dataset.label)});
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+/* ---------- data ---------- */
+const COLORS=[
+ {key:'primary',role:'PRIMARY',name:'Oxford Blue',sub:'Primary brand',hex:'#002147',rgb:[0,33,71],share:'25% share',fg:'#FFFFFF',use:'Cover banner fill, Heading 1 and 2 text, table header row fill, and 4 pt callout left borders.'},
+ {key:'canvas',role:'CANVAS',name:'Pure Chalk White',sub:'Page canvas',hex:'#FFFFFF',rgb:[255,255,255],share:'65% share',fg:'#002147',use:'Page background, primary table row fill, and reversed text inside #002147 headers.'},
+ {key:'ink',role:'BODY INK',name:'Structural Graphite',sub:'Body ink',hex:'#2B3440',rgb:[43,52,64],share:'Body ink',fg:'#FFFFFF',use:'All Normal body paragraphs, bullet lists, and data table cell values. Softer than harsh #000000.'},
+ {key:'accent',role:'ACCENT',name:'European Oak',sub:'Institutional accent',hex:'#C4A77D',rgb:[196,167,125],share:'Up to 10% share',fg:'#002147',use:'1.5 pt bottom underline beneath Heading 1, cover divider rule, and subtle secondary accents.'},
+ {key:'fill',role:'FILL',name:'Soft Slate Tint',sub:'Callout fill',hex:'#F4F6F9',rgb:[244,246,249],share:'Containers',fg:'#2B3440',use:'Background shading for Executive Callout Boxes, metadata cards, and summary panels.'},
+ {key:'zebra',role:'ZEBRA',name:'Ice Zebra Tint',sub:'Table striping',hex:'#F8FAFC',rgb:[248,250,252],share:'Tables',fg:'#2B3440',use:'Alternating even-row background fill in schedules, RACI matrices, and budget tables.'}
+];
+
+/* ---------- router ---------- */
+const views=$$('.view'),links=$$('#tabs a');
+function route(want){
+  let id=typeof want==='string'?want:location.hash.slice(1);if(!views.some(v=>v.dataset.view===id))id='overview';
+  views.forEach(v=>v.hidden=v.dataset.view!==id);
+  links.forEach(a=>a.getAttribute('href')==='#'+id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  window.scrollTo(0,0);
+  if(id==='logo')layoutLogo();
+  if(id==='type')drawSp();
+}
+addEventListener('hashchange',()=>route());
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]');if(!a)return;
+  const id=a.getAttribute('href').slice(1);
+  if(!views.some(v=>v.dataset.view===id))return;
+  e.preventDefault();route(id);
+  try{if(location.hash.slice(1)!==id)location.hash=id}catch(err){}
+});
+
+/* ---------- overview mosaic ---------- */
+const tc={primary:'t-primary',canvas:'t-canvas',accent:'t-accent',ink:'t-ink',fill:'t-fill',zebra:'t-zebra'};
+COLORS.forEach(c=>{
+  const b=document.createElement('button');b.type='button';b.className='tile '+tc[c.key];
+  b.style.background=c.hex;b.style.color=c.fg;b.dataset.copy=c.hex;b.dataset.label=c.name+' '+c.hex;
+  b.setAttribute('aria-label','Copy '+c.name+' '+c.hex);
+  b.innerHTML=(c.key==='primary'?'<div class="cv"><strong>Futura University</strong><em></em><small>Site Selection and Campus Build-Out, Frankfurt</small></div>':'')+'<b>'+c.name+'</b><span>'+c.hex+' · '+c.share+'</span>';
+  $('#mosaic').appendChild(b);
+});
+
+/* ---------- colors ---------- */
+const page=$('#colorPage'),cap=$('#pageCap'),CAP0=cap.textContent;let pinned=null;
+function showC(key){
+  if(!key){page.removeAttribute('data-active');page.classList.remove('canvas-hit');$$('[data-c]',page).forEach(e=>e.classList.remove('hit'));cap.textContent=CAP0;return}
+  page.setAttribute('data-active',key);page.classList.toggle('canvas-hit',key==='canvas');
+  $$('[data-c]',page).forEach(e=>e.classList.toggle('hit',e.dataset.c.split(' ').includes(key)));
+  const c=COLORS.find(x=>x.key===key);cap.textContent=c.name+': '+c.use;
+}
+COLORS.forEach(c=>{
+  const el=document.createElement('article');el.className='sw';el.dataset.key=c.key;el.dataset.on='false';
+  const rgb=c.rgb.join(', ');
+  el.innerHTML='<button class="chip" type="button" aria-pressed="false" aria-label="Show '+c.name+' on the sample page" style="background:'+c.hex+';color:'+c.fg+'">'+c.role+'</button>'+
+   '<div><h3>'+c.name+'</h3><p class="sb">'+c.sub+' · '+c.share+'</p><p class="use">'+c.use+'</p>'+
+   '<div class="codes"><button class="code" type="button" data-copy="'+c.hex+'" data-label="'+c.hex+'"><i>HEX</i>'+c.hex+'</button><button class="code" type="button" data-copy="'+rgb+'" data-label="RGB '+rgb+'"><i>RGB</i>'+rgb+'</button></div></div>';
+  el.addEventListener('mouseenter',()=>showC(c.key));el.addEventListener('mouseleave',()=>showC(pinned));
+  el.addEventListener('focusin',()=>showC(c.key));el.addEventListener('focusout',()=>showC(pinned));
+  $('.chip',el).addEventListener('click',()=>{
+    pinned=pinned===c.key?null:c.key;
+    $$('.sw').forEach(s=>{const on=s.dataset.key===pinned;s.dataset.on=on;$('.chip',s).setAttribute('aria-pressed',on)});
+    showC(pinned||c.key);
+  });
+  $('#swatches').appendChild(el);
+});
+$('#copyAll').addEventListener('click',()=>copy(COLORS.map(c=>c.hex).join('\n'),'all six hex codes'));
+
+/* ---------- type ---------- */
+const ROLES=[
+ {k:'title',n:'Document Title',s:'Georgia 22 pt',font:'Georgia',size:22,w:'Bold',col:'#FFFFFF',ls:'1.08',b:0,a:8,rules:['Cover banner only.']},
+ {k:'h1',n:'Heading 1: Section Title',s:'Georgia 15.5 pt',font:'Georgia',size:15.5,w:'Bold',col:'#002147',b:12,a:6,rules:['1.5 pt #C4A77D bottom rule.','Keep with next enabled.']},
+ {k:'h2',n:'Heading 2: Sub-Section',s:'Georgia 12 pt',font:'Georgia',size:12,w:'Bold',col:'#002147',b:10,a:4,rules:['Keep with next enabled.','Numbered, for example 2.1.']},
+ {k:'h3',n:'Heading 3: Kicker Label',s:'Arial 9.5 pt',font:'Arial',size:9.5,w:'Bold',col:'#5A6778',b:7,a:2,rules:['All caps.','Placed directly above tables or callout boxes.']},
+ {k:'body',n:'Normal Body Paragraph',s:'Arial 10 pt',font:'Arial',size:10,w:'Regular',col:'#2B3440',ls:'1.18',b:0,a:5,rules:['Left-aligned. Never justified.']},
+ {k:'table',n:'Table Cell and Caption Text',s:'Arial 8.5 pt',font:'Arial',size:8.5,w:'Regular',col:'#2B3440',ls:'1.12',rules:['Left-aligned text.','Right-aligned Euro currency figures.']}
+];
+let role='h1';
+function setRole(k){
+  role=k;const r=ROLES.find(x=>x.k===k);
+  $$('#roles button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k));
+  $$('#tp [data-role]').forEach(e=>e.classList.toggle('on',e.dataset.role===k));
+  const rows=[['Font',r.font,r.font],['Size',r.size+' pt',String(r.size)],['Weight',r.w,null],['Color',r.col,r.col]];
+  if(r.ls)rows.push(['Line spacing',r.ls,r.ls]);
+  if(r.b!==undefined)rows.push(['Space before',r.b+' pt',String(r.b)],['Space after',r.a+' pt',String(r.a)]);
+  $('#specs').innerHTML=rows.map(x=>'<div class="r"><dt>'+x[0]+'</dt><dd class="v" style="margin:0">'+x[1]+'</dd>'+(x[2]?'<button class="mini" type="button" data-copy="'+x[2]+'" data-label="'+x[0].toLowerCase()+' '+x[2]+'">Copy</button>':'<span></span>')+'</div>').join('');
+  $('#ruleList').innerHTML=r.rules.map(t=>'<li>'+t+'</li>').join('');
+  drawSp();
+}
+ROLES.forEach(r=>{const b=document.createElement('button');b.type='button';b.dataset.k=r.k;b.setAttribute('aria-pressed','false');b.innerHTML='<span>'+r.n+'</span><small>'+r.s+'</small>';b.addEventListener('click',()=>setRole(r.k));$('#roles').appendChild(b)});
+$$('#tp [data-role]').forEach(e=>e.addEventListener('click',ev=>{ev.stopPropagation();setRole(e.dataset.role)}));
+$$('#zoomSeg button').forEach(b=>b.addEventListener('click',()=>{$$('#zoomSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#tp').style.setProperty('--z',b.dataset.z);drawSp()}));
+setRole('h1');
+
+/* ---------- logo ---------- */
+const LV={
+ cover:{n:'Cover banner lockup',file:'White-on-Navy PNG',min:62,max:68,def:65,ratio:4,where:'Top-left inside the #002147 cover block. Keep at least 8 mm clear padding on all sides.'},
+ header:{n:'Running header logo',file:'Navy-on-White PNG',min:34,max:38,def:36,ratio:4,where:'Top-left of pages 2 and up, or use the crisp text header on dense technical annexes.'},
+ crest:{n:'Formal crest seal',file:'Circular crest PNG',min:22,max:26,def:24,ratio:1,where:'Beside the Executive Sign-Off and Board Authorization blocks on final pages.'}
+};
+let lv='cover',wmm=65;const PXMM=96/25.4;
+function lockupHTML(u,cls,color){return '<div class="lockup" style="--u:'+u+'px;color:'+color+';'+cls+'"><span class="kb">FU</span><span class="wm">Futura<small>University</small></span></div>'}
+function layoutLogo(){
+  const v=LV[lv],h=lv==='crest'?wmm:wmm/v.ratio,cs=h/2,f=n=>(+n).toFixed(1);
+  const dimH=(x1,x2,y,label)=>lnSVG(x1,y,x2,y)+arrowSVG(x1,y,'l')+arrowSVG(x2,y,'r')+'<text class="dt" x="'+((x1+x2)/2).toFixed(2)+'" y="'+(y-1.8)+'" text-anchor="middle">'+label+'</text>';
+  const dimV=(x,y1,y2,label)=>lnSVG(x,y1,x,y2)+arrowSVG(x,y1,'u')+arrowSVG(x,y2,'d')+'<text class="dt" x="'+(x+2.8)+'" y="'+(((y1+y2)/2)+1.7).toFixed(2)+'">'+label+'</text>';
+  const ext=(x1,y1,x2,y2)=>lnSVG(x1,y1,x2,y2,'dx');
+  const lockup=(x,y,w,hh,c)=>'<g style="color:'+c+'"><rect x="'+x+'" y="'+y+'" width="'+hh+'" height="'+hh+'" fill="none" stroke="currentColor" stroke-width="'+(hh*.06).toFixed(2)+'"/><text x="'+(x+hh/2)+'" y="'+(y+hh*.64).toFixed(2)+'" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="'+(hh*.42).toFixed(2)+'" fill="currentColor">FU</text><text x="'+(x+hh*1.22).toFixed(2)+'" y="'+(y+hh*.5).toFixed(2)+'" font-family="Georgia,serif" font-weight="700" font-size="'+(hh*.3).toFixed(2)+'" letter-spacing="'+(hh*.024).toFixed(2)+'" fill="currentColor">FUTURA</text><text x="'+(x+hh*1.22).toFixed(2)+'" y="'+(y+hh*.78).toFixed(2)+'" font-family="Georgia,serif" font-size="'+(hh*.19).toFixed(2)+'" letter-spacing="'+(hh*.04).toFixed(2)+'" fill="currentColor">UNIVERSITY</text></g>';
+  const bar=(x,y,w,hh,o)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+hh+'" fill="#2B3440" opacity="'+(o||.14)+'"/>';
+  let g='<rect x="0" y="0" width="210" height="297" fill="#fff"/>';
+  let rows;
+  if(lv==='cover'){
+    const off=Math.max(8,cs),y0=off+h+cs+7,x0=off+wmm+9;
+    g+='<rect x="0" y="0" width="210" height="60" fill="#002147"/>';
+    g+='<rect x="15" y="78" width="70" height="5" fill="#002147" opacity=".9"/><rect x="15" y="85" width="180" height=".6" fill="#C4A77D"/>';
+    for(let i=0;i<8;i++)g+=bar(15,96+i*6,i%3===2?110:180,2);
+    g+='<rect x="'+f(off-cs)+'" y="'+f(off-cs)+'" width="'+f(wmm+2*cs)+'" height="'+f(h+2*cs)+'" fill="none" stroke="#C4A77D" stroke-width=".5" stroke-dasharray="1.6 1.2"/>';
+    g+=lockup(off,off,wmm,h,'#fff');
+    g+='<g style="color:#fff">'+ext(off,off+h,off,y0+1.5)+ext(off+wmm,off+h,off+wmm,y0+1.5)+dimH(off,off+wmm,y0,'W = '+f(wmm))
+      +ext(off+wmm,off,x0+1.5,off)+ext(off+wmm,off+h,x0+1.5,off+h)+dimV(x0,off,off+h,'H = '+f(h))
+      +dimV(off+wmm/2,Math.max(.4,off-cs),off,'CS = '+f(cs))+'</g>';
+    g+='<text class="dt" x="206" y="56" text-anchor="end" style="fill:#C4A77D">banner height [TBD]</text>';
+    rows=[['W','width',f(wmm)+' mm'],['R','aspect ratio of your file','[TBD], 4.0 drawn'],['H','W ÷ R',f(h)+' mm'],['CS','0.5 × H',f(cs)+' mm'],['X','max(8, CS)',f(off)+' mm'],['Banner H','block height','[TBD]']];
+  }else if(lv==='header'){
+    const x1=15,y1=10,y0=y1+h+cs+7,x0=x1+wmm+9;
+    g+='<rect x="15" y="52" width="80" height="5" fill="#002147" opacity=".9"/><rect x="15" y="59" width="180" height=".6" fill="#C4A77D"/>';
+    for(let i=0;i<14;i++)g+=bar(15,70+i*6,i%4===3?120:180,2);
+    g+='<rect x="'+f(x1-cs)+'" y="'+f(y1-cs)+'" width="'+f(wmm+2*cs)+'" height="'+f(h+2*cs)+'" fill="none" stroke="#C4A77D" stroke-width=".5" stroke-dasharray="1.6 1.2"/>';
+    g+=lockup(x1,y1,wmm,h,'#002147');
+    g+='<g style="color:#2B3440">'+ext(x1,y1+h,x1,y0+1.5)+ext(x1+wmm,y1+h,x1+wmm,y0+1.5)+dimH(x1,x1+wmm,y0,'W = '+f(wmm))
+      +ext(x1+wmm,y1,x0+1.5,y1)+ext(x1+wmm,y1+h,x0+1.5,y1+h)+dimV(x0,y1,y1+h,'H = '+f(h))
+      +dimV(x1+wmm/2,y1-cs,y1,'CS = '+f(cs))+'</g>';
+    rows=[['W','width',f(wmm)+' mm'],['R','aspect ratio of your file','[TBD], 4.0 drawn'],['H','W ÷ R',f(h)+' mm'],['CS','0.5 × H',f(cs)+' mm'],['X, Y','position','[TBD]']];
+  }else{
+    const cx=165,cy=168,y0=cy+wmm+cs+7;
+    g+='<rect x="15" y="150" width="90" height="5" fill="#002147" opacity=".9"/><rect x="15" y="157" width="180" height=".6" fill="#C4A77D"/>';
+    g+='<rect x="15" y="166" width="130" height="6" fill="#002147"/>';
+    for(let i=0;i<3;i++)g+='<rect x="15" y="'+(174+i*12)+'" width="130" height="10" fill="'+(i%2?'#F8FAFC':'#fff')+'" stroke="#D5DBE4" stroke-width=".3"/>';
+    g+='<rect x="'+f(cx-cs)+'" y="'+f(cy-cs)+'" width="'+f(wmm+2*cs)+'" height="'+f(wmm+2*cs)+'" fill="none" stroke="#C4A77D" stroke-width=".5" stroke-dasharray="1.6 1.2"/>';
+    const r=wmm/2,mx=cx+r,my=cy+r;
+    g+='<g style="color:#002147" fill="none" stroke="currentColor"><circle cx="'+f(mx)+'" cy="'+f(my)+'" r="'+f(r)+'" stroke-width="'+(wmm*.05).toFixed(2)+'"/><circle cx="'+f(mx)+'" cy="'+f(my)+'" r="'+f(r*.72)+'" stroke-width="'+(wmm*.03).toFixed(2)+'"/><circle cx="'+f(mx)+'" cy="'+f(my)+'" r="'+f(r*.44)+'" stroke-width="'+(wmm*.03).toFixed(2)+'"/></g>';
+    g+='<text x="'+f(mx)+'" y="'+f(my+wmm*.09)+'" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="'+(wmm*.26).toFixed(2)+'" fill="#002147">FU</text>';
+    g+='<g style="color:#2B3440">'+ext(cx,cy+wmm,cx,y0+1.5)+ext(cx+wmm,cy+wmm,cx+wmm,y0+1.5)+dimH(cx,cx+wmm,y0,'W = '+f(wmm))+dimV(mx,cy-cs,cy,'CS = '+f(cs))+'</g>';
+    rows=[['W','width = height',f(wmm)+' mm'],['CS','0.5 × W',f(cs)+' mm'],['X, Y','position','[TBD]']];
+  }
+  $('#a4').innerHTML='<svg class="dwg" viewBox="0 0 210 297" width="100%" height="100%" aria-hidden="true" style="--fs:5px">'+g+'</svg>';
+  $('#vars').innerHTML='<thead><tr><th>Var</th><th>Meaning</th><th>Value</th></tr></thead><tbody>'+rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>').join('')+'</tbody>';
+  const ok=wmm>=v.min&&wmm<=v.max,px=Math.round(wmm*PXMM);
+  $('#wRead').textContent=wmm.toFixed(1)+' mm = '+px+' px';
+  const ver=$('#verdict');ver.dataset.ok=ok;$('.ic',ver).textContent=ok?'✓':'✕';
+  $('#verdictT').textContent=ok?'In range for the '+v.n.toLowerCase()+' ('+v.min+' to '+v.max+' mm).':(wmm<v.min?'Too small. Add '+(v.min-wmm).toFixed(1)+' mm, the range is '+v.min+' to '+v.max+' mm.':'Too large. Remove '+(wmm-v.max).toFixed(1)+' mm, the range is '+v.min+' to '+v.max+' mm.');
+}
+function setLv(k){
+  lv=k;const v=LV[k];wmm=v.def;
+  $$('#lvSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===k));
+  const r=$('#wmm');r.min=v.min-14;r.max=v.max+14;r.value=wmm;$('#wpx').value=Math.round(wmm*PXMM);
+  $('#lvFacts').innerHTML='<div><dt>Mark</dt><dd>'+v.n+'</dd></div><div><dt>File</dt><dd>'+v.file+'</dd></div><div><dt>Width</dt><dd>'+v.min+' to '+v.max+' mm'+(k==='crest'?' square':'')+'</dd></div><div><dt>Place it</dt><dd>'+v.where+'</dd></div>';
+  layoutLogo();
+}
+$$('#lvSeg button').forEach(b=>b.addEventListener('click',()=>setLv(b.dataset.v)));
+$('#wmm').addEventListener('input',e=>{wmm=parseFloat(e.target.value);$('#wpx').value=Math.round(wmm*PXMM);layoutLogo()});
+$('#wpx').addEventListener('input',e=>{const p=parseFloat(e.target.value);if(!(p>0))return;wmm=Math.round(p/PXMM*2)/2;const r=$('#wmm');r.value=Math.min(Math.max(wmm,r.min),r.max);layoutLogo();$('#wRead').textContent=(p/PXMM).toFixed(1)+' mm = '+Math.round(p)+' px'});
+addEventListener('resize',()=>{if(!$('[data-view="logo"]').hidden)layoutLogo()});
+const MIS={
+ stretch:['transform:scaleX(1.55)','Banned: stretched. Lock the aspect ratio and resize from a corner.'],
+ shadow:['filter:drop-shadow(5px 7px 4px rgba(0,0,0,.5))','Banned: drop shadow.'],
+ glow:['filter:drop-shadow(0 0 9px rgba(255,190,0,.95))','Banned: outer glow.'],
+ border:['outline:3px solid #2B3440;outline-offset:8px','Banned: border around the mark.'],
+ blue:['background:#4472C4;color:#fff;padding:10px 14px','Banned: unapproved bright blue fill.']
+};
+function setMis(k){
+  const lg=$('#dontLogo'),base='--u:56px;',m=$('#mVerdict');
+  $$('#mistakes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===k));
+  lg.style.cssText=base+(k?MIS[k][0]:'');
+  m.dataset.ok=!k;$('.ic',m).textContent=k?'✕':'✓';$('#mText').textContent=k?MIS[k][1]:'Correct: the mark is used as supplied.';
+}
+$$('#mistakes button').forEach(b=>b.addEventListener('click',()=>setMis(b.getAttribute('aria-pressed')==='true'?null:b.dataset.m)));
+$('#mReset').addEventListener('click',()=>setMis(null));
+
+/* ---------- blocks ---------- */
+const GATES=[
+ ['G1 (M2)','Site Selection and Weighted Criteria Matrix (>=5 sites)','Group 11 PMO','CFO (Markus Reiter)','EUR 0.30M','LOCKED','locked'],
+ ['G2 (M3)','Binding Lease (~8,000 m2) and Expansion Option','Group 11 PMO','Board of Trustees','EUR 0.60M','LOCKED','locked'],
+ ['G3 (M5)','Change-of-Use Building Permit and Frozen CAD Plans','Lead Architect','COO and Bauaufsicht','EUR 1.00M','CRITICAL GATE','crit'],
+ ['G4 (M8)','Core Renovation and Safety / Code Inspections','General Contractor','CFO and COO','EUR 6.40M','IN PROGRESS','prog'],
+ ['G5 (M11)','Furniture, Labs, Hybrid AV, and Project 15 Shell','Facilities / AV Lead','COO and CAO','EUR 2.00M','PLANNED','plan'],
+ ['G6 (M14)','DGNB / BREEAM Gold Audit and Operational Handover','Group 11 PMO','Rector (Prof. Dr. Vogt)','EUR 0.30M','PLANNED','plan'],
+ ['Reserve','Centrally Held Steering Committee Contingency (~13%)','Steering Committee','CFO and Rector','EUR 1.40M','CONTROLLED','ctrl'],
+ ['Total','Approved Project 2 Capital Envelope','Group 11 PMO','Executive Owners','EUR 12.00M','ENVELOPE CAP','cap']
+];
+const ESC=[
+ ['Inside one work package:',' up to EUR 100k or 2 weeks delay, zero scope change','Project Lead (Group 11 PMO)','Logged in weekly PMO Issue and Decision Log; reported at bi-weekly Steering Committee.'],
+ ['Use of contingency,',' up to 4 weeks delay, or scope change within EUR 12.0M','Steering Committee (CFO, Rector, COO, CAO, PMO)','Requires written PMO Decision Brief comparing options against timeline and contingency burn.'],
+ ['Lease signature,',' total cost above EUR 12.0M, or delay eating into 6-month buffer','Board of Trustees (via Rector); EduVest informed','Formal Board escalation dossier signed by CFO and Rector prior to commitment.'],
+ ['Academic room and laboratory requirements',' for the three Bachelor programs','Academic Side (CAO and Academic Senate)','Any budget impact routes through the CFO and, above thresholds, to the Board.']
+];
+const SCOPE=[
+ ['Site screening (>=5 Frankfurt office properties) and weighted feasibility study','Future campuses in Munich, Vienna, and Zurich (later expansion phases)'],
+ ['Lease negotiation (~8,000 m2, rent-free fit-out period, expansion option)','Campus IT backbone, network, and cybersecurity infrastructure (Project 13)'],
+ ['Architectural design, room programme, and M5 change-of-use permit','Library collection acquisition and cataloguing systems (Project 15)'],
+ ['Core renovation (EUR 6.4M), labs/AV fit-out (EUR 2.0M), DGNB/BREEAM Gold, and opening readiness','Student housing and post-handover campus operations (Project 16)']
+];
+const SIGN=[['CFO and Executive Owner','Markus Reiter'],['Rector / CEO and Executive Owner','Prof. Dr. Elena Vogt'],['Project Lead (Group 11 PMO)','Ikram Ladidi / Nguyen Khoi Hoang']];
+const CALL_T='CRITICAL GATE LOCK: M5 CHANGE-OF-USE PERMIT AND EUR 12.0M CAPEX ENVELOPE';
+const CALL_B='Core campus renovation (EUR 6.4M at EUR 800/m2 across 8,000 m2) must reach Gate G4 completion by M8, at least 6 months prior to the first 300-student intake. This buffer protects Wissenschaftsrat spatial accreditation and unlocks Project 13 (IT) and Project 15 (Library) handovers.';
+const tsv=rows=>rows.map(r=>r.join('\t')).join('\n');
+const sw=c=>'<i style="background:'+c+'"></i>';
+
+const BLOCKS=[
+ {id:'b1',t:'4.1 Executive decision and governance callout box',copy:CALL_T+'\n'+CALL_B,copyLabel:'Copy callout text',
+  html:'<div class="callout"><div class="bar" data-part="bar"></div><div class="fb" data-part="fill"><div class="ct" data-part="title">'+CALL_T+'</div><div data-part="body">'+CALL_B+'</div></div></div>',
+  parts:[['bar','#002147','Left border, 4 pt, #002147'],['fill','#F4F6F9','Fill #F4F6F9'],['title','#5A6778','Title: Arial bold, caps'],['body','#2B3440','Body: Arial 10 pt, 1.18, #2B3440']],
+  recipe:['Add a Square from Elements. Fill #F4F6F9, no border, full text width.','Add a second, narrow Square about 1.4 mm wide (4 pt) in #002147. Pin it to the left edge of the first.','Add one text box for the title (Arial, bold, caps) and one for the body (Arial 10, line spacing 1.18, #2B3440, left-aligned).','Select all four, group them (Ctrl or Cmd + G) and duplicate the group wherever you need a callout.']},
+ {id:'b2',t:'4.2 Stage-gate and CapEx budget table',tsv:true,kind:'gates',
+  parts:[['header','#002147','Header row: #002147, white bold text'],['zebra','#F8FAFC','Even rows: #F8FAFC'],['money','#FFFFFF','Euro figures right-aligned'],['status','#C4A77D','Status: bold caps label'],['gate','#FFFFFF','Gate column: bold']],
+  note:'Status styling is a suggestion. Every row total adds up to EUR 12.00M, so keep the figures as given.',
+  recipe:['Elements, Table. Create 6 columns and 9 rows (header, six gates, reserve, total).','Select the header row and set the cell color to #002147. Make the text white, bold, Arial 8.5.','Set every even body row to #F8FAFC. Leave the others white.','Right-align the CapEx column. Make the Gate column and the Total row bold.','Paste the copied rows into the body cells without formatting, then restyle once and copy the style.']},
+ {id:'b3',t:'4.3 Governance escalation and decision authority matrix',tsv:true,kind:'esc',
+  parts:[['header','#002147','Header row: #002147, white bold text'],['zebra','#F8FAFC','Even rows: #F8FAFC'],['lead','#FFFFFF','Trigger lead-in in bold']],
+  recipe:['Elements, Table with 3 columns and 5 rows.','Header row #002147 with white bold text. Even rows #F8FAFC.','Bold only the lead-in words of each trigger, as shown.','Keep text left-aligned, Arial 8.5, line spacing 1.12.']},
+ {id:'b4',t:'4.4 Two-column scope comparison',tsv:true,kind:'scope',
+  parts:[['header','#002147','Header cells: #002147, white caps'],['zebra','#F8FAFC','Even rows: #F8FAFC']],
+  recipe:['Elements, Table with 2 columns and 5 rows.','Set both header cells to #002147 with white, bold, all-caps text.','Add a bullet before each item. Keep rows even-striped with #F8FAFC.','Use the same row heights on both sides so items line up.']},
+ {id:'b5',t:'5. Executive authorization and sign-off block',tsv:true,kind:'sign',
+  parts:[['header','#002147','Header row: #002147, white bold text'],['crest','#002147','Crest seal: 22 to 26 mm, beside the block'],['sigline','#C4A77D','Signature and date lines']],
+  note:'Close Mandates, Business Cases and Stage-Gate Dossiers with this block.',
+  recipe:['Elements, Table with 4 columns and 4 rows. Style the header row like the other tables.','Type the roles and names. Add underscores for the signature line and 2026 in the date cell.','Place the crest seal 22 to 26 mm wide beside the table. Lock the ratio and keep the clear space.']}
+];
+function tbl(head,rows,opts={}){
+  return '<table class="pt'+(opts.nm?' nm':'')+'"><thead><tr>'+head.map((h,i)=>'<th data-part="header'+(opts.numCol===i?' money':'')+'"'+(opts.numCol===i?' class="num"':'')+'>'+h+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table>';
+}
+function buildBlock(b){
+  let preview='',copy=b.copy,cl=b.copyLabel||'Copy rows';
+  if(b.kind==='gates'){
+    const rows=GATES.map((g,i)=>{const z=(i%2===1)?' zebra':'';return '<tr'+(i===GATES.length-1?' class="tot"':'')+'><td data-part="gate'+z+'"><b>'+g[0]+'</b></td><td data-part="'+z.trim()+'">'+g[1]+'</td><td data-part="'+z.trim()+'">'+g[2]+'</td><td data-part="'+z.trim()+'">'+g[3]+'</td><td class="num" data-part="money'+z+'">'+g[4]+'</td><td data-part="status'+z+'"><span class="pill '+g[6]+'">'+g[5]+'</span></td></tr>'});
+    preview='<div class="pvw"><div class="paper">'+tbl(['Gate','Work Package / Deliverable','DRI Owner','Approver (A)','CapEx','Status'],rows,{numCol:4})+'</div></div>';
+    copy=tsv([['Gate','Work Package / Deliverable','DRI Owner','Approver (A)','CapEx','Status']].concat(GATES.map(g=>g.slice(0,6))));
+  }else if(b.kind==='esc'){
+    const rows=ESC.map((e,i)=>{const z=i%2===1?'zebra':'';return '<tr><td data-part="lead '+z+'"><b>'+e[0]+'</b>'+e[1]+'</td><td data-part="'+z+'">'+e[2]+'</td><td data-part="'+z+'">'+e[3]+'</td></tr>'});
+    preview='<div class="pvw"><div class="paper">'+tbl(['Deviation or Decision Trigger','Binding Decision Authority','Documentation and Escalation Rule'],rows,{})+'</div></div>';
+    copy=tsv([['Deviation or Decision Trigger','Binding Decision Authority','Documentation and Escalation Rule']].concat(ESC.map(e=>[e[0]+e[1],e[2],e[3]])));
+  }else if(b.kind==='scope'){
+    const rows=SCOPE.map((s,i)=>{const z=i%2===1?'zebra':'';return '<tr><td data-part="'+z+'">&bull; '+s[0]+'</td><td data-part="'+z+'">&bull; '+s[1]+'</td></tr>'});
+    preview='<div class="pvw"><div class="paper">'+tbl(['IN SCOPE: PROJECT 2 (FRANKFURT FOUNDING CAMPUS)','OUT OF SCOPE: SEPARATE WORKSTREAMS'],rows,{})+'</div></div>';
+    copy=tsv([['IN SCOPE: PROJECT 2 (FRANKFURT FOUNDING CAMPUS)','OUT OF SCOPE: SEPARATE WORKSTREAMS']].concat(SCOPE));
+  }else if(b.kind==='sign'){
+    const rows=SIGN.map((s,i)=>'<tr><td data-part="'+(i%2===1?'zebra':'')+'"><b>'+s[0]+'</b></td><td data-part="'+(i%2===1?'zebra':'')+'">'+s[1]+'</td><td data-part="sigline'+(i%2===1?' zebra':'')+'"><span class="sig">______________________</span></td><td data-part="sigline'+(i%2===1?' zebra':'')+'"><span class="sig">____ / ____ / 2026</span></td></tr>');
+    preview='<div class="signrow"><div class="pvw"><div class="paper">'+tbl(['Governance Role','Named Authority','Signature','Date'],rows,{nm:true})+'</div></div><div class="crest-s" data-part="crest"><div class="crestm"><b>FU</b></div></div></div>';
+    copy=tsv([['Governance Role','Named Authority','Signature','Date']].concat(SIGN.map(s=>[s[0],s[1],'______________________','____ / ____ / 2026'])));
+  }else{
+    preview='<div class="pvw"><div class="paper">'+b.html+'</div></div>';
+  }
+  const el=document.createElement('div');el.className='block';
+  el.innerHTML='<header><h3>'+b.t+'</h3><button class="btn ghost" type="button" data-copy="'+copy.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" data-label="'+(b.tsv?'table rows':'callout text')+'">'+cl+'</button></header>'+
+   '<div class="pv">'+preview+'</div>'+
+   '<div class="parts">'+b.parts.map(p=>'<button type="button" data-p="'+p[0]+'">'+sw(p[1])+p[2]+'</button>').join('')+'</div>'+
+   (b.note?'<p class="note" style="margin-bottom:10px">'+b.note+'</p>':'')+
+   '<details class="recipe"><summary>Build it in Canva</summary><div><ol>'+b.recipe.map(r=>'<li>'+r+'</li>').join('')+'</ol></div></details>';
+  const pv=$('.pv',el);
+  function hl(part){
+    if(!part){pv.removeAttribute('data-active');$$('[data-part]',pv).forEach(n=>n.classList.remove('hit'));return}
+    pv.setAttribute('data-active',part);
+    $$('[data-part]',pv).forEach(n=>n.classList.toggle('hit',n.dataset.part.split(' ').includes(part)));
+  }
+  $$('.parts button',el).forEach(bt=>{
+    bt.addEventListener('mouseenter',()=>hl(bt.dataset.p));bt.addEventListener('mouseleave',()=>hl(null));
+    bt.addEventListener('focus',()=>hl(bt.dataset.p));bt.addEventListener('blur',()=>hl(null));
+    bt.addEventListener('click',()=>hl(pv.getAttribute('data-active')===bt.dataset.p?null:bt.dataset.p));
+  });
+  return el;
+}
+BLOCKS.forEach(b=>$('#blockList').appendChild(buildBlock(b)));
+
+/* ---------- QA ---------- */
+const QA=[
+ ['Paste without formatting','Use Ctrl+Shift+V (Windows) or Cmd+Shift+V (macOS) for every paste from notes, spreadsheets or chat, so foreign fonts, line heights and highlights are stripped at once.'],
+ ['Re-apply the heading styles','Give every section title Heading 1, Heading 2 or Normal from the Styles list. In Canva, copy the style from a correct text box instead of bolding or resizing by hand.'],
+ ['Verify grayscale print contrast','Print a black-and-white test page, or check a monochrome preview. #002147 headers, #C4A77D borders and status labels must stay legible without color.'],
+ ['Inspect page breaks before export','No Heading 1 or 2 sits alone at the bottom of a page, and multi-page tables repeat their #002147 header row cleanly.']
+];
+const qaKey='futura-qa-v1';let qaState=[false,false,false,false];
+try{const s=JSON.parse(store(qaKey)||'null');if(Array.isArray(s)&&s.length===4)qaState=s.map(Boolean)}catch(e){}
+function qaDraw(){
+  const n=qaState.filter(Boolean).length;
+  $('#qaBar').style.width=(n*25)+'%';
+  $('#qaTxt').textContent=n===4?'All 4 checks done. Ready to export to PDF.':n+' of 4 checks done';
+  $$('#qaList input').forEach((i,k)=>i.checked=qaState[k]);
+}
+QA.forEach((q,i)=>{
+  const l=document.createElement('label');l.innerHTML='<input type="checkbox" id="qa'+i+'"><span><b>'+q[0]+'</b><p>'+q[1]+'</p></span>';
+  $('input',l).addEventListener('change',e=>{qaState[i]=e.target.checked;store(qaKey,JSON.stringify(qaState));qaDraw()});
+  $('#qaList').appendChild(l);
+});
+$('#qaReset').addEventListener('click',()=>{qaState=[false,false,false,false];store(qaKey,JSON.stringify(qaState));qaDraw()});
+qaDraw();
+$('#gsBtn').addEventListener('click',e=>{const g=$('#gs'),on=g.dataset.gray!=='true';g.dataset.gray=on;e.target.setAttribute('aria-pressed',on);e.target.textContent=on?'Show in color':'Show in grayscale'});
+
+function lum(hex){const c=[1,3,5].map(i=>parseInt(hex.substr(i,2),16)/255).map(v=>v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
+function ratio(a,b){const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+const PAIRS=[['White on Oxford Blue','Table headers, cover title','#FFFFFF','#002147'],['Graphite on White','Body text','#2B3440','#FFFFFF'],['Graphite on Soft Slate','Callout text','#2B3440','#F4F6F9'],['Kicker grey on White','Heading 3 labels','#5A6778','#FFFFFF'],['Oak on Oxford Blue','Rules on the cover','#C4A77D','#002147'],['Oak on White','Heading 1 rule','#C4A77D','#FFFFFF']];
+$('#ctTable').innerHTML='<thead><tr><th>Pair</th><th>Used for</th><th>Sample</th><th>Ratio</th><th>Use as</th></tr></thead><tbody>'+PAIRS.map(p=>{const r=ratio(p[2],p[3]);return '<tr><td>'+p[0]+'</td><td>'+p[1]+'</td><td><span class="pair" style="color:'+p[2]+';background:'+p[3]+'">Aa</span></td><td><b>'+r.toFixed(1)+' : 1</b></td><td>'+(r>=4.5?'Text and rules':'Rules and borders only')+'</td></tr>'}).join('')+'</tbody>';
+
+const ANAT=(()=>{
+  const dl=(x1,y1,x2,y2,c)=>lnSVG(x1,y1,x2,y2,c);
+  let s='<svg class="dwg" style="--fs:11px" viewBox="0 0 720 220" role="img" aria-label="Plan view of the callout box with the left border, fill, title, body and the unspecified width and padding labeled">';
+  s+='<rect x="170" y="60" width="320" height="84" fill="currentColor" opacity=".06"/><rect x="170" y="60" width="320" height="84" fill="none" stroke="currentColor" stroke-width="1"/><rect x="170" y="60" width="8" height="84" fill="currentColor"/>';
+  s+='<rect x="196" y="74" width="170" height="5" fill="currentColor"/>';
+  [92,102,112].forEach(y=>{s+='<rect x="196" y="'+y+'" width="270" height="3" fill="currentColor" opacity=".45"/>'});
+  s+='<rect x="196" y="122" width="150" height="3" fill="currentColor" opacity=".45"/>';
+  s+=dl(366,76,502,76,'gd2')+'<text class="dt" x="510" y="80">Title: Arial 9.5 bold, caps</text>';
+  s+=dl(466,97,502,97,'gd2')+'<text class="dt" x="510" y="101">Body: Arial 10, 1.18, #2B3440</text>';
+  s+=dl(482,134,502,134,'gd2')+'<text class="dt" x="510" y="138">Fill: #F4F6F9</text>';
+  s+=dl(174,102,158,102,'gd2')+'<text class="dt" x="152" y="106" text-anchor="end">Border: 4 pt, #002147</text>';
+  s+=dl(170,60,170,38,'dx')+dl(178,60,178,38,'dx')+dl(196,74,196,38,'dx');
+  s+=dl(170,44,178,44)+arrowSVG(170,44,'l',1.6)+arrowSVG(178,44,'r',1.6)+'<text class="dt" x="164" y="48" text-anchor="end">B = 4 pt</text>';
+  s+=dl(178,44,196,44)+arrowSVG(178,44,'l',1.6)+arrowSVG(196,44,'r',1.6)+'<text class="dt" x="204" y="48">PAD X = [TBD]</text>';
+  s+=dl(170,144,170,182,'dx')+dl(490,144,490,182,'dx')+dl(170,176,490,176)+arrowSVG(170,176,'l',1.6)+arrowSVG(490,176,'r',1.6)+'<text class="dt" x="330" y="171" text-anchor="middle">W = [TBD]</text>';
+  s+='<text class="dt" x="712" y="214" text-anchor="end" style="opacity:.6">Not to scale</text></svg>';
+  return '<details class="recipe anat" open><summary>Anatomy of the callout</summary><div><div style="overflow-x:auto">'+s+'</div>'+
+   '<table class="vars"><thead><tr><th>Var</th><th>Meaning</th><th>Value</th></tr></thead><tbody>'+
+   '<tr><td>B</td><td>left border</td><td>4 pt</td></tr><tr><td>PAD X, PAD Y</td><td>space inside the fill</td><td>[TBD]</td></tr><tr><td>W</td><td>box width</td><td>[TBD]</td></tr><tr><td>T1</td><td>title style</td><td>Arial 9.5 pt bold</td></tr><tr><td>T2</td><td>body style</td><td>Arial 10 pt, 1.18</td></tr></tbody></table>'+
+   '<p class="note" style="margin-top:8px">The guide fixes the border, fill and type. Width and padding are not specified, so they stay open until the brief sets them.</p></div></details>';
+})();
+$('#blockList .block').insertAdjacentHTML('beforeend',ANAT);
+/* ---------- drawing helpers ---------- */
+function arrowSVG(x,y,d,sc){
+  sc=sc||1;const a=2.4*sc,w=.9*sc;
+  const p={l:[[x,y],[x+a,y-w],[x+a,y+w]],r:[[x,y],[x-a,y-w],[x-a,y+w]],u:[[x,y],[x-w,y+a],[x+w,y+a]],d:[[x,y],[x-w,y-a],[x+w,y-a]]}[d];
+  return '<polygon points="'+p.map(q=>q[0].toFixed(2)+','+q[1].toFixed(2)).join(' ')+'" fill="currentColor"/>';
+}
+function lnSVG(x1,y1,x2,y2,c){return '<line class="'+(c||'dl')+'" x1="'+x1.toFixed(2)+'" y1="'+y1.toFixed(2)+'" x2="'+x2.toFixed(2)+'" y2="'+y2.toFixed(2)+'"/>'}
+
+/* ---------- exploded page anatomy (overview) ---------- */
+const LAYERS=[
+ {n:'Page canvas',chips:['#FFFFFF'],d:'Pure Chalk White, about 65% of every page. A4 portrait, 210 x 297 mm.'},
+ {n:'Cover banner',chips:['#002147','#C4A77D'],d:'Oxford Blue block with the white Georgia title and an oak divider rule.'},
+ {n:'Type',chips:['#002147','#2B3440','#C4A77D'],d:'Georgia headings in #002147 over a 1.5 pt oak rule. Arial body in #2B3440.'},
+ {n:'Callout',chips:['#F4F6F9','#002147'],d:'Soft Slate Tint box with a 4 pt Oxford Blue left border.'},
+ {n:'Table',chips:['#002147','#F8FAFC'],d:'Oxford Blue header row, #F8FAFC on even rows, Euro figures right-aligned.'},
+ {n:'Logo mark',chips:['#002147'],d:'Cover lockup 62 to 68 mm wide, with at least 8 mm clear padding.'}
+];
+const EX={s:.78,c:.866,ox:235,oy:200,e:40};
+function iso(x,y,z){return [EX.ox+(x-y)*EX.c*EX.s,EX.oy+(x+y)*.5*EX.s-z]}
+function polyS(pts,z,cls){return '<polygon class="'+cls+'" points="'+pts.map(p=>iso(p[0],p[1],z).map(n=>n.toFixed(1)).join(',')).join(' ')+'"/>'}
+function rectS(x,y,w,h,z,cls){return polyS([[x,y],[x+w,y],[x+w,y+h],[x,y+h]],z,cls)}
+function lineS(a,b,z,cls){const p=iso(a[0],a[1],z),q=iso(b[0],b[1],z);return '<line class="'+cls+'" x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'"/>'}
+function textS(x,y,z,rot,txt,dy){const p=iso(x,y,z);return '<text transform="translate('+p[0].toFixed(1)+' '+p[1].toFixed(1)+') rotate('+rot+')" text-anchor="middle" dy="'+dy+'">'+txt+'</text>'}
+let hiL=null;
+function setHi(i){
+  hiL=i;const svg=$('#explSvg');svg.dataset.hi=i===null?'':'1';
+  $$('#explSvg [data-i], #layerList li').forEach(n=>n.classList.toggle('on',i!==null&&+n.dataset.i===i));
+}
+function drawExpl(t){
+  const e=EX.e*t,Z=i=>e*i,L=[];
+  L[0]=rectS(0,0,210,297,0,'bg')+lineS([224,0],[224,297],0,'dm')+lineS([210,0],[228,0],0,'dm')+lineS([210,297],[228,297],0,'dm')+textS(224,148.5,0,-30,'H = 297',11)
+      +lineS([0,311],[210,311],0,'dm')+lineS([0,297],[0,314],0,'dm')+lineS([210,297],[210,314],0,'dm')+textS(105,311,0,30,'W = 210',11);
+  L[1]=rectS(0,0,210,60,Z(1),'bg')+rectS(0,0,210,60,Z(1),'hatch')+rectS(15,48,40,1.6,Z(1),'oakfill');
+  let ty='';ty+=rectS(15,78,70,6,Z(2),'solid')+rectS(15,86,180,1.6,Z(2),'oakfill');
+  for(let i=0;i<6;i++)ty+=rectS(15,98+i*8,i%3===2?120:180,2.4,Z(2),'soft');
+  L[2]=ty;
+  L[3]=rectS(15,150,180,38,Z(3),'bg')+rectS(15,150,180,38,Z(3),'hline')+rectS(15,150,3.2,38,Z(3),'solid')+rectS(25,160,140,2.4,Z(3),'soft')+rectS(25,168,110,2.4,Z(3),'soft');
+  L[4]=rectS(15,200,180,56,Z(4),'bg')+rectS(15,200,180,10,Z(4),'hatch')+rectS(15,219,180,9,Z(4),'hline')+rectS(15,237,180,9,Z(4),'hline')+lineS([15,256],[195,256],Z(4),'dm');
+  L[5]=rectS(0,0,81,32.3,Z(5),'dash')+rectS(8,8,65,16.25,Z(5),'th')+rectS(8,8,16.25,16.25,Z(5),'th');
+  let guides='';[[0,297],[210,297],[210,0]].forEach(c=>{const a=iso(c[0],c[1],0),b=iso(c[0],c[1],Z(5));guides+='<line class="gd" x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'"/>'});
+  const A=[[210,0],[210,0],[195,78],[195,150],[195,200],[73,8]];
+  let tags='';
+  A.forEach((a,i)=>{const p=iso(a[0],a[1],Z(i)),ty2=40+(5-i)*68;
+    tags+='<g class="tag" data-i="'+i+'"><line class="gd" x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="394" y2="'+ty2+'"/><circle cx="404" cy="'+ty2+'" r="10"/><text x="404" y="'+(ty2+3.5)+'">L'+(i+1)+'</text></g>'});
+  const defs='<defs><pattern id="pDiag" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" style="stroke:var(--ink);stroke-width:1"/></pattern><pattern id="pLine" width="4" height="4" patternUnits="userSpaceOnUse"><line x1="0" y1="2" x2="4" y2="2" style="stroke:var(--ink);stroke-width:.6;opacity:.55"/></pattern></defs>';
+  $('#explSvg').innerHTML=defs+guides+L.map((g,i)=>'<g class="ly" data-i="'+i+'">'+g+'</g>').join('')+tags;
+  setHi(hiL);
+}
+const ll=$('#layerList');
+LAYERS.forEach((l,i)=>{
+  const li=document.createElement('li');li.dataset.i=i;li.tabIndex=0;
+  li.innerHTML='<span class="ln-n">L'+(i+1)+'</span><div><b>'+l.n+'</b><span class="chp">'+l.chips.map(c=>'<i style="background:'+c+'"></i>').join('')+'</span><p>'+l.d+'</p></div>';
+  li.addEventListener('mouseenter',()=>setHi(i));li.addEventListener('mouseleave',()=>setHi(null));
+  li.addEventListener('focus',()=>setHi(i));li.addEventListener('blur',()=>setHi(null));
+  li.addEventListener('click',()=>setHi(hiL===i?null:i));ll.appendChild(li);
+});
+$('#explSvg').addEventListener('mouseover',e=>{const g=e.target.closest('[data-i]');setHi(g?+g.dataset.i:null)});
+$('#explSvg').addEventListener('mouseleave',()=>setHi(null));
+$('#explode').addEventListener('input',e=>drawExpl(e.target.value/100));
+drawExpl(.85);
+
+/* ---------- spacing bands on the type specimen ---------- */
+function drawSp(){
+  const tp=$('#tp');if(!tp||!tp.offsetParent)return;
+  let L=$('#spLayer');if(!L){L=document.createElement('div');L.id='spLayer';tp.appendChild(L)}
+  L.innerHTML='';
+  const r=ROLES.find(x=>x.k===role);if(!r||r.b===undefined)return;
+  const el=$('#tp [data-role="'+role+'"]');if(!el)return;
+  const T=tp.getBoundingClientRect(),E=el.getBoundingClientRect(),cs=getComputedStyle(el);
+  const mt=parseFloat(cs.marginTop),mb=parseFloat(cs.marginBottom);
+  const zone=(top,h,label)=>{if(h<1)return;const d=document.createElement('div');d.className='sp';d.style.cssText='left:'+(E.left-T.left)+'px;width:'+E.width+'px;top:'+top+'px;height:'+h+'px';d.innerHTML='<span>'+label+'</span>';L.appendChild(d)};
+  zone(E.top-T.top-mt,mt,'before '+r.b+' pt');
+  zone(E.bottom-T.top,mb,'after '+r.a+' pt');
+}
+addEventListener('resize',drawSp);
+
+/* ---------- sheet title blocks ---------- */
+const SHEETS=[['overview','Overview'],['colors','Color system'],['type','Typography'],['logo','Logo and crest'],['blocks','Building blocks'],['qa','QA check']];
+SHEETS.forEach((s,i)=>{
+  const w=$('[data-view="'+s[0]+'"] .wrap'),d=document.createElement('div');d.className='tblk';
+  d.innerHTML='<div><span>Drawing no.</span><b>FU-P2-STYLE-0'+(i+1)+'</b></div><div><span>Title</span><b>'+s[1]+'</b></div><div><span>Units</span><b>mm, pt</b></div><div><span>Revision</span><b>1.0</b></div><div><span>Sheet</span><b>'+(i+1)+' of 6</b></div><div><span>Drawn by</span><b>Group 11 PMO</b></div>';
+  w.appendChild(d);
+});
+
+setLv('cover');
+
+route();
+</script>
+
+</body></html>
